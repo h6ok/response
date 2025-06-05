@@ -58,7 +58,7 @@ func (res *Response) SetBody(data any) *Response {
 	return res
 }
 
-func (res *Response) BasicSecurity(data any) *Response {
+func (res *Response) BasicSecurity() *Response {
 	res.Writer.Header().Set("X-Content-Type-Options", "nosniff")
 	res.Writer.Header().Set("X-Frame-Options", "DENY")
 	res.Writer.Header().Set("X-XSS-Protection", "1; mode=block")
