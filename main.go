@@ -8,11 +8,11 @@ import (
 )
 
 type Response struct {
-	Writer    http.ResponseWriter
-	Status    int           `json:"status"`
-	Data      any           `json:"data,omitempty"`
-	Error     ErrorResponse `json:"error"`
-	Timestamp time.Time     `json:"timestamp"`
+	Writer    http.ResponseWriter `json:"-"`
+	Status    int                 `json:"status"`
+	Data      any                 `json:"data,omitempty"`
+	Error     ErrorResponse       `json:"error"`
+	Timestamp time.Time           `json:"timestamp"`
 }
 
 type ErrorResponse struct {
