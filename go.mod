@@ -1,3 +1,3 @@
-module github.com/hiroaki-th/response
+module github.com/h6ok/response
 
 go 1.21.0
