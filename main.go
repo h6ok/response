@@ -47,6 +47,13 @@ func ServerError(r http.ResponseWriter) *Response {
 	}
 }
 
+func Status(r http.ResponseWriter, status int) *Response {
+	return &Response{
+		Writer: r,
+		Status: status,
+	}
+}
+
 func (res *Response) Json() *Response {
 	res.Writer.Header().Set("Content-Type", "application/json")
 	return res
@@ -63,6 +70,13 @@ func (res *Response) BasicSecurity() *Response {
 	res.Writer.Header().Set("X-Frame-Options", "DENY")
 	res.Writer.Header().Set("X-XSS-Protection", "1; mode=block")
 	res.Writer.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
+	return res
+}
+
+func (res *Response) CORS() *Response {
+	res.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	res.Writer.Header().Set("Access-Control-Allow-Methods", "GET POST DELETE OPTIONS")
+	res.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	return res
 }
 
