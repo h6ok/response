@@ -73,8 +73,8 @@ func (res *Response) BasicSecurity() *Response {
 	return res
 }
 
-func (res *Response) CORS() *Response {
-	res.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+func (res *Response) CORS(origin string) *Response {
+	res.Writer.Header().Set("Access-Control-Allow-Origin", origin)
 	res.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
 	res.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 	res.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
